@@ -1,3 +1,7 @@
+var people = ['Sleepy', 'Sneezy'];
+console.log (people);
+console.log (this.people);
+
 (function() {
 
 	var people = {
@@ -5,6 +9,7 @@
 		init: function() {
 			//efficient DOM usage
 			this.cacheDom();
+			this.bindEvents();
 			this.render();
 		},
 		cacheDom: function() {
@@ -15,14 +20,21 @@
 			this.template = this.$el.find('#people-template').html();
 
 		},
+		bindEvents: function() {
+			//usually don't want to write functions directly in an event bind, it's just not a good pattern. for a lot of reasons.
+			this.$button.on('click', addPerson);
+		},
 		render: function() {
-			//Mustache.render("hi {{name}}", {name: 'Will'}); 	//that's basically what Mustache does. takes values, spits into string
 			var data = {
 				people: this.people,
 			};
-			//$('peopleModule').find('ul').html(Mustache.render(template, data)); 
+			console.log (data.people);
+			console.log (this.people);
 			this.$ul.html(Mustache.render(this.template, data)); 
-		}
+		},
+		addPerson: function() {
+			this.people.push(this.$input.val());
+		},
 	};
 	
 	people.init();
