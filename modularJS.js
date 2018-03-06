@@ -1,18 +1,33 @@
-var people = {
-	people: [],
-	template: $('#people-template').html(),
-}
-
-
-// self-executing function
-// isolates scope
-// "kind of" a module, more like, a "spaghetti code module". 
-// gets rid of global variables, but isn't really better coding practices 
 (function() {
-	//var people = [];
-	//var template = $('#people-template').html();
 
-})
+	var people = {
+		people: ['Will', 'Laura'],
+		init: function() {
+			//efficient DOM usage
+			this.cacheDom();
+			this.render();
+		},
+		cacheDom: function() {
+			this.$el = $('#peopleModule');	//author's convention: likes to add $ to vars from JQuery searches. 
+			this.$button = this.$el.find('button');
+			this.$input = this.$el.find('input');
+			this.$ul = this.$el.find('ul');
+			this.template = this.$el.find('#people-template').html();
+
+		},
+		render: function() {
+			//Mustache.render("hi {{name}}", {name: 'Will'}); 	//that's basically what Mustache does. takes values, spits into string
+			var data = {
+				people: this.people,
+			};
+			//$('peopleModule').find('ul').html(Mustache.render(template, data)); 
+			this.$ul.html(Mustache.render(this.template, data)); 
+		}
+	};
+	
+	people.init();
+
+})()
 
 //object literal
 var myModule = {
