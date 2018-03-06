@@ -22,3 +22,11 @@ Based on the Modular JavaScript tutorial [playlist series](https://www.youtube.c
 ```
 
 but it can make sense in JavaScript. Since there's no "real" classes, and as "everything's an object", seeing the exact same literal for both outer variable, inner attribute name in oddity #1 appears acceptable.  For oddity #2, it's just a matter of familiarizing oneself with `this`'s scope. In essence, `var people = ...` is equivalent to an inner functions' inner variable's `this.people`, as demonstrated by the various `console.log` added.  This indicates `this` has "higher" (or unexpected) scope access beyond what I've expected. Time to review `this` in more depth.
+
+
+##### Next topics
+
+* javascript object nesting 
+* this
+* delegate
+* event
