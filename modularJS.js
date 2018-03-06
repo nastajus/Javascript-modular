@@ -1,10 +1,18 @@
-var people = [];
-var template = $('#people-template').html();  //"{{#people}}" is mustache.js
+var people = {
+	people: [],
+	template: $('#people-template').html(),
+}
 
-//tried this...
-//var template = document.getElementById('people-template');
-//var template = document.getElementById('people-template').innerHTML;
-//var template = document.getElementById('people-template').textContent;
+
+// self-executing function
+// isolates scope
+// "kind of" a module, more like, a "spaghetti code module". 
+// gets rid of global variables, but isn't really better coding practices 
+(function() {
+	//var people = [];
+	//var template = $('#people-template').html();
+
+})
 
 //object literal
 var myModule = {
