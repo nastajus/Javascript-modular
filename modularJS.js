@@ -1,7 +1,3 @@
-var people = ['Sleepy', 'Sneezy'];
-console.log (people);
-console.log (this.people);
-
 (function() {
 
 	var people = {
@@ -22,18 +18,22 @@ console.log (this.people);
 		},
 		bindEvents: function() {
 			//usually don't want to write functions directly in an event bind, it's just not a good pattern. for a lot of reasons.
-			this.$button.on('click', addPerson);
+			
+			// something with binding events, the context is going to change. it'll no longer be people.
+			// when an event fires, "it sets the <this> value to be the item that it was bound on. in this case, button, instead of staying on person.
+			
+			this.$button.on('click', this.addPerson.bind(this));
 		},
 		render: function() {
 			var data = {
 				people: this.people,
 			};
-			console.log (data.people);
-			console.log (this.people);
 			this.$ul.html(Mustache.render(this.template, data)); 
 		},
 		addPerson: function() {
 			this.people.push(this.$input.val());
+			this.render();
+			this.$input.val('');
 		},
 	};
 	
