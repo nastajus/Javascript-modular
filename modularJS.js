@@ -18,12 +18,10 @@
 		},
 		bindEvents: function() {
 			//usually don't want to write functions directly in an event bind, it's just not a good pattern. for a lot of reasons.
-			
-			// something with binding events, the context is going to change. it'll no longer be people.
-			// when an event fires, "it sets the <this> value to be the item that it was bound on. in this case, button, instead of staying on person.
-			
 			this.$button.on('click', this.addPerson.bind(this));
+			this.$ul.delegate('em.del', 'click', this.deletePerson.bind(this));
 		},
+		//this is the guy (function) that touches HTML, not anywhere else
 		render: function() {
 			var data = {
 				people: this.people,
@@ -35,6 +33,13 @@
 			this.render();
 			this.$input.val('');
 		},
+		deletePerson: function(e) {
+			var $remove = $(e.target).closest('li');
+			var i = this.$ul.find('li').index($remove);
+			
+			this.people.splice(i,1);
+			this.render();
+		}
 	};
 	
 	people.init();
