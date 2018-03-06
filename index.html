@@ -2,6 +2,10 @@
 <html class="no-js">
 	<head>
 		<title>JS Tutorials</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+
+
 	</head>
 	<body>
 		<div></div>
@@ -9,7 +13,16 @@
 			<h1>People</h1>
 			<input placeholder="name" type="text">
 			<button id="addPerson">Add Person</button>
-			<ul id="people"></ul>
+			<ul id="people">
+				<script id=people-template" type="text/template">
+					{{#people}}
+						<li>
+							<span>{{.}}</span>
+							<em class="del">X<em>
+						</li>
+					{{/people}}
+				</script>
+			</ul>
 		</div>
 		<script src="modularJS.js"></script>
 	</body>

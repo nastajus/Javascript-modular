@@ -1,3 +1,11 @@
+var people = [];
+var template = $('#people-template').html();  //"{{#people}}" is mustache.js
+
+//tried this...
+//var template = document.getElementById('people-template');
+//var template = document.getElementById('people-template').innerHTML;
+//var template = document.getElementById('people-template').textContent;
+
 //object literal
 var myModule = {
 	name: 'Will',
