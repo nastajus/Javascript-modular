@@ -30,3 +30,4 @@ but it can make sense in JavaScript. Since there's no "real" classes, and as "ev
 * this
 * delegate
 * event
+* iife
